@@ -1,0 +1,32 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+
+<button @onclick="Load">Load</button>
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+@foreach(String item in lstData)
+{
+    <div>@item</div>
+}
+
+@code{
+    List<String> lstData = new List<string>();
+
+    private void Load()
+    {
+        lstData.Add("Time Server is: "+ DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
+        
+        while(true)
+        {
+            lstData.Add("Time Server is: "+ DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
+            Thread.Sleep(1000);
+        }
+    }
+}

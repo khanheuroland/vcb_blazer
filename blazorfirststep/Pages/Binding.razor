@@ -1,0 +1,30 @@
+@using blazorfirststep.Pages.Components;
+@page "/dev/binding"
+@inject NavigationManager navHelper;
+<input type="text" @bind="taskname">
+<button @onclick="Enter">Enter</button>
+
+<button @onclick="Gotocounter">Go to Counter</button>
+<h1>Todo Tasks</h1>
+
+@foreach(String task in lstTodoTask)
+{
+    <TodoItem taskName="@task"></TodoItem>
+}
+
+@code{
+    String taskname = "";
+    List<String> lstTodoTask = new List<string>();
+
+    private void Enter()
+    {
+        lstTodoTask.Add(taskname);
+            
+        taskname = "";
+    }
+
+    private void Gotocounter()
+    {
+        navHelper.NavigateTo("/counter/7");
+    }
+}
